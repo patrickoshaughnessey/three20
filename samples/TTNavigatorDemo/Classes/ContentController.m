@@ -13,7 +13,7 @@
 }
 
 - (void)orderAction:(NSString*)action {
-  TTLOG(@"ACTION: %@", action);
+  TTDINFO(@"ACTION: %@", action);
 }
 
 - (void)showNutrition {
@@ -37,8 +37,7 @@
         initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered
         target:self action:@selector(dismiss)] autorelease];
 
-    NSString* ref = [query objectForKey:@"ref"];
-    TTLOG(@"ORDER REFERRED FROM %@", ref);
+    TTDINFO(@"ORDER REFERRED FROM %@", [query objectForKey:@"ref"]);
   }
   return self;
 }
@@ -103,13 +102,13 @@
 
 - (void)loadView {
   [super loadView];
-  
+
   CGRect frame = CGRectMake(10, 10, self.view.width-20, 100);
   TTStyledTextLabel* label = [[[TTStyledTextLabel alloc] initWithFrame:frame] autorelease];
   label.tag = 42;
   label.font = [UIFont systemFontOfSize:22];
   [self.view addSubview:label];
-  
+
   if (_contentType == ContentTypeNutrition) {
     self.view.backgroundColor = [UIColor grayColor];
     label.backgroundColor = self.view.backgroundColor;
@@ -132,4 +131,3 @@
 }
 
 @end
- 
